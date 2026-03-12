@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Aastha ❤️</title>
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  overflow-x:hidden;
+  color:white;
+  text-align:center;
+}
+.container{
+  padding:40px 20px;
+}
+h1{
+  font-size:42px;
+}
+.message{
+  font-size:20px;
+  max-width:650px;
+  margin:20px auto;
+}
+button{
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff4d6d;
+  cursor:pointer;
+}
+button:hover{
+  transform:scale(1.05);
+}
+.hidden{
+  display:none;
+  font-size:22px;
+  margin-top:20px;
+}/* Heart rain */ .heart{ position:fixed; top:-10px; font-size:20px; animation: fall linear forwards; }
+
+@keyframes fall{ to{ transform: translateY(100vh); } }
+
+/* Love letter popup */ .popup{ position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; color:#ff4d6d; padding:25px; border-radius:15px; width:80%; max-width:400px; display:none; }
+
+.popup button{ margin-top:15px; }
+
+.timer{ font-size:20px; margin-top:20px; }
+
+img{ width:200px; border-radius:20px; margin-top:15px; }
+
+</style>
+</head>
+<body><div class="container"><h1>For My Love Aastha (Bubu) ❤️</h1><img src="aastha.jpg" alt="Aastha"><p class="message">
+Aastha, you are very special to me. Every moment with you makes my life happier. 
+This small website is just to show how much you mean to me.
+</p><button onclick="openLetter()">Open My Love Letter 💌</button>
+
+<div class="timer" id="loveTimer"></div></div><div class="popup" id="letter">
+<h2>My Love Letter</h2>
+<p>
+Dear Aastha ❤️<br><br>
+You make my days brighter and my heart happier. 
+I made this little website just for you because you are very important to me.
+</p>
+<button onclick="closeLetter()">Close</button>
+</div><audio autoplay loop>
+<source src="love.mp3" type="audio/mpeg">
+</audio><script>
+
+function openLetter(){
+  document.getElementById("letter").style.display="block";
+}
+
+function closeLetter(){
+  document.getElementById("letter").style.display="none";
+}
+
+/* heart rain */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{heart.remove()},6000);
+},300);
+
+/* love timer */
+const startDate=new Date("2024-01-01");
+
+function updateTimer(){
+  const now=new Date();
+  const diff=now-startDate;
+
+  const days=Math.floor(diff/(1000*60*60*24));
+  const hours=Math.floor((diff/(1000*60*60))%24);
+  const minutes=Math.floor((diff/(1000*60))%60);
+
+  document.getElementById("loveTimer").innerHTML=
+  "I have loved you for: "+days+" days "+hours+" hours "+minutes+" minutes ❤️";
+}
+
+setInterval(updateTimer,1000);
+updateTimer();
+
+</script></body>
+</html>
